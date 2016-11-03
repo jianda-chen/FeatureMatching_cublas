@@ -5,12 +5,12 @@
 
 void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
-	if (nrhs < 2 || nlhs > 1 || nrhs > 3)
+    if (nrhs < 2 || nlhs > 1 || nrhs > 3)
         mexErrMsgTxt("Wrong number of input/output arguments.");
     if (!mxIsSingle(prhs[0]) || !mxIsSingle(prhs[1]))
         mexErrMsgTxt("Inputs must be single float matrix.");
     if (mxGetM(prhs[0]) != mxGetM(prhs[1]))
-    	mexErrMsgTxt("Features dimensions are not equal.");
+        mexErrMsgTxt("Features dimensions are not equal.");
 
     int vdim = mxGetM(prhs[0]);
     int K1 = mxGetN(prhs[0]);
@@ -19,7 +19,7 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     float *B = (float *)mxGetData(prhs[1]);
     float thresh = 1.5;
     if (nrhs != 2)
-    	thresh = *(float *)mxGetData(prhs[2]);
+        thresh = *(float *)mxGetData(prhs[2]);
 
     //printf("%d %d %d %d\n", mxGetN(prhs[0]), mxGetM(prhs[0]), mxGetN(prhs[1]), mxGetM(prhs[1]));
 
